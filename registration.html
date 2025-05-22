@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Food Delivery</title>
+    <link rel="stylesheet" href="register.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form action="register.jsp" method="post">
+            <input type="text" name="t1" placeholder="Enter your name" required>
+            <input type="email" name="t2" placeholder="Enter your email" required>
+            <input type="password" name="t3" placeholder="Enter your password" required>
+            <button type="submit">Register</button>
+        </form>
+        <!-- Google Sign-In Button -->
+        <div id="g_id_onload"
+             data-client_id="YOUR_GOOGLE_CLIENT_ID"
+             data-callback="handleCredentialResponse">
+        </div>
+        <div class="g_id_signin" data-type="standard"></div>
+        <p>Or</p>
+
+        
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+</body>
+</html>

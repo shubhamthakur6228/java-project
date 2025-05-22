@@ -1,0 +1,217 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9; /* Light, neutral background for the whole page */
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #ff6347; /* Tomato red background for food theme */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header nav h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 30px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #feb47b; /* Light orange for hover */
+    transform: scale(1.1); /* Smooth hover effect */
+}
+
+/* Home Section */
+#home {
+    background-image: url('foods.png');
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+#home h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#home p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+#home .button {
+    background-color: #feb47b;
+    color: white;
+    padding: 14px 35px;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#home .button:hover {
+    background-color: #ff6f61; /* Slightly darker red on hover */
+    transform: scale(1.1); /* Slight zoom-in effect */
+}
+
+/* Menu Section */
+#menu {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#menu h2 {
+    font-size: 2.8rem;
+    color: #ff6347; /* Tomato red for food-related theme */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+#menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+#menu-items div {
+    background-color: #fafafa;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#menu-items div:hover {
+    transform: translateY(-10px); /* Lift the item on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow effect */
+}
+
+#menu-items div img {
+    width: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+#menu-items div h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#menu-items div p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+#menu-items div .button {
+    background-color: #ff6347;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#menu-items div .button:hover {
+    background-color: #feb47b; /* Lighter red for button hover effect */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 1rem;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #home h2 {
+        font-size: 2.5rem;
+    }
+
+    #home p {
+        font-size: 1rem;
+    }
+
+    #menu-items {
+        grid-template-columns: 1fr;
+    }
+
+    #menu-items div {
+        padding: 20px;
+    }
+
+    #menu h2 {
+        font-size: 2rem;
+    }
+
+    #home .button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

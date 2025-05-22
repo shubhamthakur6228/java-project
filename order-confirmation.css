@@ -1,0 +1,141 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f7c08a, #ff6347);
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background: #ff6347;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffe4e1;
+}
+
+/* Main confirmation section */
+main {
+    padding: 2rem;
+    background: #fff;
+}
+
+.order-confirmation {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.order-confirmation h2 {
+    color: #ff6347;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.order-confirmation h3 {
+    color: #ff6347;
+    margin-bottom: 1rem;
+}
+
+.order-confirmation p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Order summary section */
+#order-summary p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#order-summary h3 {
+    font-size: 1.2rem;
+    color: #ff6347;
+}
+
+/* Button styles */
+button {
+    background: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background: #e5533c;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    background: #ff6347;
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    nav a {
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .order-confirmation {
+        padding: 1rem;
+    }
+
+    button {
+        width: 100%;
+    }
+}

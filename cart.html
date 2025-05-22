@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - FoodExpress</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>FoodExpress</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="menu.jsp">Menu</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart">
+            <h2>Your Cart</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Cart items will be dynamically populated here -->
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <p>Subtotal: <span id="subtotal">₹0.00</span></p>
+                <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+                <a href="menu.jsp" class="add-more-btn">Add More Items</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FoodExpress. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            displayCart();
+
+            const checkoutBtn = document.querySelector('.checkout-btn');
+
+            // Add event listener for "Proceed to Checkout" button
+            checkoutBtn.addEventListener('click', function (event) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                if (cart.length === 0) {
+                    // Prevent redirection and show message
+                    event.preventDefault();
+                    alert('Your cart is empty. Add items before proceeding to checkout.');
+                }
+            });
+        });
+
+        // Function to display items in the cart
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const subtotalContainer = document.getElementById('subtotal');
+            let subtotal = 0;
+
+            cartItemsContainer.innerHTML = ''; // Clear previous cart items
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<tr><td colspan="5">Your cart is empty.</td></tr>';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const row = document.createElement('tr');
+                const totalPrice = item.price * item.quantity;
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>₹${item.price.toFixed(2)}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${totalPrice.toFixed(2)}</td>
+                    <td>
+                        <input type="number" min="1" max="${item.quantity}" value="1" id="remove-quantity-${index}" class="remove-quantity-input">
+                        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                    </td>
+                `;
+                cartItemsContainer.appendChild(row);
+                subtotal += totalPrice;
+            });
+
+            // Update subtotal
+            subtotalContainer.textContent = `₹${subtotal.toFixed(2)}`;
+        }
+
+        // Function to remove a specified number of items from the cart
+        function removeItem(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const removeQuantityInput = document.getElementById(`remove-quantity-${index}`);
+            const removeQuantity = parseInt(removeQuantityInput.value, 10);
+
+            if (removeQuantity <= 0 || isNaN(removeQuantity)) {
+                alert('Please enter a valid number of items to remove.');
+                return;
+            }
+
+            if (removeQuantity >= cart[index].quantity) {
+                // Remove the entire item if removeQuantity is greater than or equal to current quantity
+                cart.splice(index, 1);
+            } else {
+                // Reduce the quantity of the item
+                cart[index].quantity -= removeQuantity;
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+    </script>
+</body>
+</html>

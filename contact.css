@@ -1,0 +1,121 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f7c08a, #ff6347);
+    color: #333;
+}
+
+header {
+    background: #ff6347;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffe4e1;
+}
+
+.contact-us, .contact-info {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.contact-us h2, .contact-info h3 {
+    color: #ff6347;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.contact-us p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+form label {
+    display: block;
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+form input:focus, form textarea:focus {
+    border-color: #ff6347;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+}
+
+button {
+    background: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e5533c;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.contact-info strong {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    nav a {
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .contact-us, .contact-info {
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,59 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f7c08a, #ff6347);
+    color: #333;
+}
+
+/* Video Section */
+.about-video {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.about-video h2 {
+    color: #ff6347;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    gap: 1rem; /* Space between videos */
+    padding: 1rem;
+}
+
+.video-container video {
+    width: 45%; /* Maintain equal width for all videos */
+    max-width: 480px; /* Set a maximum size */
+    aspect-ratio: 16 / 9; /* Ensure a consistent aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+    background: #000;
+}
+
+/* Add hover effect for videos */
+.video-container video:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-container video {
+        width: 90%; /* Stretch videos to fit smaller screens */
+    }
+}

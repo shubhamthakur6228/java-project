@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order - FoodExpress</title>
+    <link rel="stylesheet" href="track-order.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 26px;
+        }
+
+        .order-info {
+            text-align: left;
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 20px;
+            background-color: #28a745;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 2s;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .track-btn, .thank-you-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .track-btn:hover, .thank-you-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🚚 Track Your Order</h2>
+
+        <div class="order-info">
+            <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+            <p><strong>Status:</strong> <span id="orderStatus"></span></p>
+            <p><strong>Current Location:</strong> <span id="currentLocation"></span></p>
+            <p><strong>Estimated Delivery Time:</strong> <span id="estimatedDeliveryTime"></span></p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="buttons">
+            <button class="track-btn" onclick="goBack()">⬅️ Go Back</button>
+            <button class="thank-you-btn" id="thankYouBtn" style="display: none;" onclick="goToThankYouPage()">✅ OK</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 FoodExpress. All rights reserved.
+    </div>
+
+    <script>
+        const trackingOrderId = sessionStorage.getItem('trackingOrderId');
+
+        if (trackingOrderId) {
+            document.getElementById('orderId').textContent = trackingOrderId;
+
+            const orderTrackingDetails = {
+                status: "Preparing your order...",
+                currentLocation: "Restaurant Kitchen",
+                estimatedDeliveryTime: "10 minutes"
+            };
+
+            document.getElementById('orderStatus').textContent = orderTrackingDetails.status;
+            document.getElementById('currentLocation').textContent = orderTrackingDetails.currentLocation;
+            document.getElementById('estimatedDeliveryTime').textContent = orderTrackingDetails.estimatedDeliveryTime;
+
+            updateProgress();
+        } else {
+            alert('Order ID is missing. Cannot track order.');
+            window.location.href = 'order-confirmation.html';
+        }
+
+        function updateProgress() {
+            let progress = 0;
+            const progressBar = document.getElementById("progress");
+            const statusElement = document.getElementById("orderStatus");
+
+            const statuses = [
+                { status: "Preparing your order...", location: "Restaurant Kitchen" },
+                { status: "Order is being packed...", location: "Packing Station" },
+                { status: "Out for delivery 🚚", location: "On the way!" },
+                { status: "Delivered 🎉", location: "Your doorstep" }
+            ];
+
+            function updateStatus(index) {
+                if (index < statuses.length) {
+                    statusElement.textContent = statuses[index].status;
+                    document.getElementById("currentLocation").textContent = statuses[index].location;
+                    progress += 33;
+                    progressBar.style.width = progress + "%";
+
+                    setTimeout(() => updateStatus(index + 1), 4000);
+                } else {
+                    document.getElementById("thankYouBtn").style.display = 'inline';
+                }
+            }
+
+            setTimeout(() => updateStatus(0), 2000);
+        }
+
+        function goBack() {
+            window.location.href = 'order-confirmation.html';
+        }
+
+        function goToThankYouPage() {
+            window.location.href = 'thankyou.html';
+        }
+    </script>
+
+</body>
+</html>

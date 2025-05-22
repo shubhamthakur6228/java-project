@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Food Delivery</title>
+<link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+             <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="aboutus.html">About Us</a>
+        </nav>
+    </header>
+    <section class="contact-us">
+        <h2>We'd Love to Hear From You!</h2>
+        <p>If you have any questions or feedback, feel free to reach out to us using the form below.</p>
+        <form action="contact.jsp" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="t1" placeholder="Enter your name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="t2" placeholder="Enter your email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="t3" rows="5" placeholder="Write your message here" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <section class="contact-info">
+        <h3>Our Contact Information</h3>
+        <p><strong>Phone:</strong> +91 7304693160</p>
+        <p><strong>Email:</strong> support@foodexpress.com</p>
+        <p><strong>Address:</strong> 123 Food Street, Mumbai, India</p>
+    </section>
+</body>
+</html>

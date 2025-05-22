@@ -1,0 +1,78 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f7c08a, #ff6347);
+    color: #333;
+}
+
+/* Header styles */
+h2 {
+    background: #ff6347;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+/* Main section */
+main {
+    padding: 2rem;
+    background: #fff;
+}
+
+/* Input and Button Section */
+#orderIdInput, button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#orderIdInput {
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#orderIdInput:focus {
+    border-color: #ff6347;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+}
+
+button {
+    background: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e5533c;
+}
+
+/* Order status section */
+#orderStatus {
+    margin-top: 20px;
+}
+ 
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    #orderIdInput, button {
+        width: 100%;
+    }
+}

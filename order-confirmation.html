@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - FoodExpress</title>
+    <link rel="stylesheet" href="order-confirmation.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background: #ffffff;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #28a745;
+            font-size: 26px;
+        }
+
+        .order-summary {
+            text-align: left;
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        #orderItems {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .track-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .track-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🎉 Your Order is Confirmed! 🎉</h2>
+
+        <div class="order-summary">
+            <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+            <p><strong>Items Ordered:</strong> <ul id="orderItems"></ul></p>
+            <p><strong>Expected Delivery Time:</strong> <span id="deliveryTime"></span></p>
+        </div>
+
+        <p>Thank you for choosing FoodExpress! 🍔🍕 Your confirmation email is on the way.</p>
+
+        <button class="track-btn" onclick="trackOrder()">📍 Track Your Order</button>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 FoodExpress. All rights reserved.
+    </div>
+
+    <script>
+        // Retrieve the order details from sessionStorage
+        let orderDetails = JSON.parse(sessionStorage.getItem('orderDetails'));
+
+        if (orderDetails) {
+            document.getElementById('orderId').textContent = orderDetails.orderId;
+
+            // Set delivery time to 10 minutes from now
+            const now = new Date();
+            now.setMinutes(now.getMinutes() + 10);
+            const deliveryTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+
+            document.getElementById('deliveryTime').textContent = deliveryTime;
+
+            // Store the updated delivery time back into sessionStorage
+            orderDetails.deliveryTime = deliveryTime;
+            sessionStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+
+            // Display items ordered
+            const orderItemsElement = document.getElementById('orderItems');
+            orderItemsElement.innerHTML = ""; // Clear previous content
+
+            if (orderDetails.items && orderDetails.items.length > 0) {
+                orderDetails.items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.name} (x${item.quantity})`;
+                    orderItemsElement.appendChild(li);
+                });
+            } else {
+                orderItemsElement.innerHTML = "<li>No items found</li>";
+            }
+        }
+
+        function trackOrder() {
+            // Retrieve the order ID to pass it to the track-order page
+            const orderId = document.getElementById('orderId').textContent;
+
+            if (orderId) {
+                // Store the Order ID in sessionStorage so it can be used in the tracking page
+                sessionStorage.setItem('trackingOrderId', orderId);
+
+                // Redirect to the track-order.html page
+                window.location.href = 'track-order.html';
+            } else {
+                alert('Order ID is missing. Cannot track order.');
+            }
+        }
+    </script>
+
+</body>
+</html>

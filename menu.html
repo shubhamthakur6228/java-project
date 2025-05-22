@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Food Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Our Menu</h1>
+    </header>
+    <div class="cart-button">
+    <nav>
+            <a href="cart.html">Cart</a>
+    </nav>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for food..." onkeyup="filterMenu()">
+    </div>
+
+    <div class="menu-items" id="menuItems">
+        <div class="item" data-name="pizza">
+            <img src="pizza.jpg" alt="Pizza">
+            <h3>Pizza</h3>
+            <p>$120.00</p>
+            <input type="number" id="pizzaQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Pizza', 120.00, document.getElementById('pizzaQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="burger">
+            <img src="burger.jpg" alt="Burger">
+            <h3>Burger</h3>
+            <p>$50.00</p>
+            <input type="number" id="burgerQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Burger', 50.00, document.getElementById('burgerQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="pasta">
+            <img src="pasta.jpg" alt="Pasta">
+            <h3>Pasta</h3>
+            <p>$80.00</p>
+            <input type="number" id="pastaQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Pasta', 80.00, document.getElementById('pastaQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="manchurian">
+            <img src="manchurian.jpg" alt="Manchurian">
+            <h3>Manchurian</h3>
+            <p>$60.00</p>
+            <input type="number" id="manchurianQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Manchurian', 60.00, document.getElementById('manchurianQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="paneer">
+            <img src="paneer.jpg" alt="Paneer">
+            <h3>Paneer</h3>
+            <p>$180.00</p>
+            <input type="number" id="paneerQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Paneer', 180.00, document.getElementById('paneerQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="friedrice">
+            <img src="friedrice.jpg" alt="Fried Rice">
+            <h3>Fried Rice</h3>
+            <p>$95.00</p>
+            <input type="number" id="friedriceQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Fried Rice', 95.00, document.getElementById('friedriceQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="noodle">
+            <img src="noodle.jpg" alt="Noodle">
+            <h3>Noodle</h3>
+            <p>$75.00</p>
+            <input type="number" id="NoodleQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Noodle', 75.00, document.getElementById('NoodleQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="frankie">
+            <img src="frankie.jpg" alt="Frankie">
+            <h3>Frankie</h3>
+            <p>$50.00</p>
+            <input type="number" id="frankieQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Frankie', 50.00, document.getElementById('frankieQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="soup">
+            <img src="soup.jpg" alt="Soup">
+            <h3>Soup</h3>
+            <p>$45.00</p>
+            <input type="number" id="soupQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Soup', 45.00, document.getElementById('soupQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="maggie">
+            <img src="maggie.jpg" alt="Maggie">
+            <h3>Maggie</h3>
+            <p>$30.00</p>
+            <input type="number" id="maggieQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Maggie', 30.00, document.getElementById('maggieQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="dosa">
+            <img src="dosa.jpg" alt="Dosa">
+            <h3>Dosa</h3>
+            <p>$50.00</p>
+            <input type="number" id="dosaQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Dosa', 50.00, document.getElementById('dosaQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="vadapav">
+            <img src="vadapav.jpg" alt="Vadapav">
+            <h3>Maggie</h3>
+            <p>$20.00</p>
+            <input type="number" id="vadapavQty" value="1" min="1" max="10">
+            <button onclick="addToCart('vadapav', 20.00, document.getElementById('vadapavQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="Samose">
+            <img src="samosa.jpg" alt="Samose">
+            <h3>Samose</h3>
+            <p>$15.00</p>
+            <input type="number" id="samoseQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Samose', 15.00, document.getElementById('samoseQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="Pohe">
+            <img src="pohe.jpg" alt="Pohe">
+            <h3>Pohe</h3>
+            <p>$20.00</p>
+            <input type="number" id="poheQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Pohe', 20.00, document.getElementById('poheQty').value)">Add to Cart</button>
+        </div>
+        <div class="item" data-name="Dhokla">
+            <img src="dhokla.jpg" alt="Dhokla">
+            <h3>Dhokla</h3>
+            <p>$30.00</p>
+            <input type="number" id="dhoklaQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Dhokla', 30.00, document.getElementById('dhoklaQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Saburdana">
+            <img src="saburdana.jpg" alt="Saburdana">
+            <h3>Saburdana</h3>
+            <p>$100.00</p>
+            <input type="number" id="saburdanaQty" value="1" min="1" max="10">
+            <button onclick="addToCart('saburdana', 100.00, document.getElementById('saburdanaQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Pavbhaji">
+            <img src="pavbhaji.jpg" alt="Dhokla">
+            <h3>Pavbhaji</h3>
+            <p>$90.00</p>
+            <input type="number" id="pavbhajiQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Pavbhaji', 90.00, document.getElementById('pavbhajiQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Cake">
+            <img src="cake.jpg" alt="Cake">
+            <h3>Cake</h3>
+            <p>$200.00</p>
+            <input type="number" id="cakeQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Cake', 200.00, document.getElementById('cakeQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Momos">
+            <img src="momos.jpg" alt="Momos">
+            <h3>Momos</h3>
+            <p>$70.00</p>
+            <input type="number" id="momosQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Momos', 70.00, document.getElementById('momosQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Sandwich">
+            <img src="sandwich.jpg" alt="Sandwich">
+            <h3>Sandwich</h3>
+            <p>$60.00</p>
+            <input type="number" id="sandwichQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Sandwich', 60.00, document.getElementById('sandwichQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Idli">
+            <img src="idli.jpg" alt="Idli">
+            <h3>Idli</h3>
+            <p>$60.00</p>
+            <input type="number" id="idliQty" value="1" min="1" max="10">
+            <button onclick="addToCart('idli', 60.00, document.getElementById('idliQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Khichdi">
+            <img src="khichdi.jpg" alt="Khichdi">
+            <h3>Khichdi</h3>
+            <p>$150.00</p>
+            <input type="number" id="khichdiQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Khichdi', 150.00, document.getElementById('khichdiQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Misal">
+            <img src="misal.jpg" alt="Misal">
+            <h3>Misal</h3>
+            <p>$139.00</p>
+            <input type="number" id="misalQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Misal', 139.00, document.getElementById('misalQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Omelet">
+            <img src="omelet.jpg" alt="Omelet">
+            <h3>Omelet</h3>
+            <p>$100.00</p>
+            <input type="number" id="omeletQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Dhokla', 100.00, document.getElementById('omeletQty').value)">Add to Cart</button>
+        </div>
+         <div class="item" data-name="Medu">
+            <img src="medu.jpg" alt="Medu">
+            <h3>Medu wada</h3>
+            <p>$60.00</p>
+            <input type="number" id="meduQty" value="1" min="1" max="10">
+            <button onclick="addToCart('Medu', 60.00, document.getElementById('meduQty').value)">Add to Cart</button>
+        </div>
+        
+               <!-- Add more items here -->
+    </div>
+
+    <script>
+        // Function to add item to cart (stores data in localStorage)
+        function addToCart(itemName, itemPrice, quantity) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = { name: itemName, price: itemPrice, quantity: parseInt(quantity) };
+
+            // Check if item already exists in the cart, if so update the quantity
+            const existingItemIndex = cart.findIndex(cartItem => cartItem.name === itemName);
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += item.quantity;
+            } else {
+                cart.push(item);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${itemName} (x${quantity}) has been added to your cart!`);
+        }
+
+        // Search functionality for filtering items
+        function filterMenu() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.menu-items .item');
+
+            items.forEach(item => {
+                const name = item.getAttribute('data-name');
+                if (name.toLowerCase().includes(input)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - FoodExpress</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>FoodExpress</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.jsp">Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="checkout">
+            <h2>Checkout</h2>
+            <div id="order-summary">
+                <!-- Order summary will be populated here -->
+            </div>
+            <h3>Payment Amount: <span id="payment-amount">₹0.00</span></h3>
+            <form action="pending_orders.jsp" method="POST" id="checkout-form">
+                <h3>Billing Information</h3>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <h3>Payment Information</h3>
+
+                <label for="payment-method">Select Payment Method:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="" disabled selected>Select Payment Mode</option>
+                    <option value="cod">Offline</option>
+                    <option value="paypal">Online</option>
+                </select>  <br><br>
+
+                <button type="submit">Submit Order</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FoodExpress. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderSummary = document.getElementById('order-summary');
+            const paymentAmount = document.getElementById('payment-amount');
+            
+            let total = 0;
+
+            // Display order summary and calculate total
+            if (cartItems.length > 0) {
+                cartItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('order-item');
+                    itemElement.innerHTML = `
+                        <p>${item.name} (x${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}</p>
+                    `;
+                    orderSummary.appendChild(itemElement);
+
+                    // Update total
+                    total += item.price * item.quantity;
+                });
+            } else {
+                orderSummary.innerHTML = '<p>Your cart is empty.</p>';
+            }
+
+            // Update the payment amount display
+            paymentAmount.textContent = `₹${total.toFixed(2)}`;
+        });
+
+        document.getElementById('checkout-form').onsubmit = function (event) {
+            event.preventDefault();
+
+            const paymentMethod = document.getElementById('payment-method').value;
+
+            if (paymentMethod === 'paypal') {
+                // Redirect to the online payment page for PayPal
+                window.location.href = 'onlinepayment.html';
+                return;
+            }
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const paymentAmount = document.getElementById('payment-amount').textContent;
+
+            const orderId = Math.floor(Math.random() * 100000);
+
+            const orderDetails = {
+                orderId: orderId,
+                items: JSON.parse(localStorage.getItem('cart')),
+                totalAmount: paymentAmount,
+                deliveryTime: '45 minutes'
+            };
+
+            sessionStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+
+            // Clear cart and redirect to confirmation page
+            localStorage.removeItem('cart');
+            window.location.href = 'order-confirmation.html';
+        };
+    </script>
+</body>
+</html>
